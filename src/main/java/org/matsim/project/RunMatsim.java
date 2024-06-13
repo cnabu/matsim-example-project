@@ -48,7 +48,7 @@ import java.util.Set;
  * @author nagel
  *
  */
-public class RunMatsim{
+public class  RunMatsim{
 
 	public static void main(String[] args) {
 
