@@ -1,6 +1,7 @@
 package org.matsim.project;
 
 import org.matsim.api.core.v01.Scenario;
+import org.matsim.contrib.otfvis.OTFVisLiveModule;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.controler.Controler;
@@ -18,7 +19,9 @@ class RunMatsimFromExamplesUtils{
 		URL url = IOUtils.extendUrl( context, "config.xml" );
 
 		Config config = ConfigUtils.loadConfig( url );
-		config.controler().setOverwriteFileSetting( OverwriteFileSetting.deleteDirectoryIfExists );
+	//	config.controler().setOverwriteFileSetting( OverwriteFileSetting.deleteDirectoryIfExists );
+		config.controller().setOverwriteFileSetting(OverwriteFileSetting.deleteDirectoryIfExists);
+		config.controller().setLastIteration(1);
 
 		// ---
 
@@ -27,6 +30,8 @@ class RunMatsimFromExamplesUtils{
 		// ---
 
 		Controler controler = new Controler( scenario );
+
+		controler.addOverridingModule(new OTFVisLiveModule());
 
 		// ---
 
